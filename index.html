@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <title>Heckcure - Coming Soon</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('assets/bg.jpg') no-repeat top center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      backdrop-filter: blur(3px);
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    @font-face {
+      font-family: 'MyFont';
+      src: url('assets/Latinotype-Trenda Bold.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .custom-heading {
+      font-family: 'MyFont', sans-serif;
+    }
+
+    .side-image {
+      flex: 1;
+      background: url('assets/logo_transparent.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.15;
+    }
+
+    .content {
+      flex: 1;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      color: #00ffcc;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .content .contact {
+      font-size: 1.2rem;
+      color: #00ffcc;
+      margin-top: 1rem;
+    }
+
+    .social-icon {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 2rem;
+      color: #00ffcc;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="side-image"></div>
+    <div class="content">
+      <h1><span class="custom-heading">Heckcure</span> - Coming Soon</h1>
+      <p>We specialize in cutting-edge CyberSecurity services, including penetration testing, threat intelligence, DFIR, and enterprise hardening solutions. Stay tuned for the launch of our platform.</p>
+      <div class="contact">
+        For more details or to contact for service: 
+        <a href="mailto:admin@heckcure.com" style="color:#00ffcc;">admin@heckcure.com</a>
+      </div>
+      <div style="margin-top: 1.5rem;">
+        <a href="https://facebook.com/heckcure" class="social-icon" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://linkedin.com/company/heckcure" class="social-icon" target="_blank"><i class="bi bi-linkedin"></i></a>
+        <a href="https://twitter.com/heckcure" class="social-icon" target="_blank"><i class="bi bi-twitter"></i></a>
+        <a href="https://instagram.com/heckcure" class="social-icon" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://github.com/heckcure" class="social-icon" target="_blank"><i class="bi bi-github"></i></a>
+        <a href="https://discord.gg/heckcure" class="social-icon" target="_blank"><i class="bi bi-discord"></i></a>
+        <a href="https://twitch.tv/heckcure" class="social-icon" target="_blank"><i class="bi bi-twitch"></i></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
