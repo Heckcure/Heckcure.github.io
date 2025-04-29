@@ -14,7 +14,6 @@
 
     html, body {
       height: 100%;
-      
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: url('assets/bg.jpg') no-repeat top center fixed;
       background-size: cover;
@@ -23,9 +22,9 @@
 
     .container {
       display: flex;
+      flex-direction: row;
       height: 100vh;
       width: 100vw;
-      position: relative;
       backdrop-filter: blur(3px);
       background-color: rgba(0, 0, 0, 0.6);
     }
@@ -54,7 +53,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
     }
 
     .content h1 {
@@ -71,9 +70,10 @@
     }
 
     .content .contact {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #00ffcc;
       margin-top: 1rem;
+      word-break: break-word;
     }
 
     .social-icon {
@@ -87,6 +87,68 @@
 
     .social-icon:hover {
       color: #ffffff;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .side-image {
+        height: 40vh;
+        flex: none;
+        background-position: center;
+        background-size: 60%;
+      }
+
+      .content {
+        flex: none;
+        padding: 2rem;
+        height: auto;
+      }
+
+      .content h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .content p, .content .contact {
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .social-icon {
+        font-size: 1.5rem;
+        margin: 0 8px;
+      }
+
+      .content div:last-child {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content {
+        padding: 1.5rem;
+      }
+
+      .content h1 {
+        font-size: 1.5rem;
+      }
+
+      .content p {
+        font-size: 0.95rem;
+      }
+
+      .content .contact {
+        font-size: 0.95rem;
+      }
+
+      .social-icon {
+        font-size: 1.3rem;
+        margin: 0 6px;
+      }
     }
   </style>
 </head>
