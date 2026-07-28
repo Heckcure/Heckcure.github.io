@@ -1,0 +1,50 @@
+---
+layout: default
+---
+{% assign words = content | strip_html | number_of_words %}
+{% assign read_time = words | divided_by: 200 %}
+{% if read_time < 1 %}{% assign read_time = 1 %}{% endif %}
+
+<section class="hero-small post-hero">
+  <div class="wrap">
+    <span class="eyebrow"><a href="{{ '/blog.html' | relative_url }}">&larr; Blog</a></span>
+    <h1>{{ page.title }}</h1>
+    <div class="post-meta">
+      <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+      <span>&middot;</span>
+      <span>{{ read_time }} min read</span>
+      {% if page.author %}<span>&middot;</span><span>{{ page.author }}</span>{% endif %}
+    </div>
+    {% if page.tags and page.tags.size > 0 %}
+    <div class="post-tags">
+      {% for tag in page.tags %}<span class="pillar-pill">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% include circuit.html id="circuitGradPost" %}
+
+<section class="section section--tight">
+  <div class="wrap post-wrap">
+    <article class="post-content reveal is-visible" id="postContent">
+      {{ content }}
+    </article>
+    <aside class="post-toc" aria-label="Table of contents">
+      <div class="post-toc-inner">
+        <span class="post-toc-title">On this page</span>
+        <nav id="postTocNav"></nav>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Think like the attacker, before they do.</h2>
+      <p>Tell us what you're trying to protect and we'll scope an engagement around it — no generic packages, no surprise add-ons.</p>
+    </div>
+    <a href="{{ '/contact.html' | relative_url }}" class="btn btn-primary">Talk to Heckcure <span class="btn-arrow">&rarr;</span></a>
+  </div>
+</section>

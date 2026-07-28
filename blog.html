@@ -1,0 +1,47 @@
+---
+layout: default
+title: Blog
+description: Write-ups, methodology, and lessons from offensive and defensive engagements — from the team at Heckcure.
+---
+
+<section class="hero-small">
+  <div class="wrap">
+    <span class="eyebrow">Blog</span>
+    <h1>Notes from the field.</h1>
+    <p class="lede">Write-ups, methodology, and the lessons worth sharing from our offensive, defensive, and advisory engagements — so your team can learn from them before an attacker does.</p>
+  </div>
+</section>
+
+{% include circuit.html id="circuitGradBlogIndex" %}
+
+<section class="section">
+  <div class="wrap">
+    {% if site.posts.size == 0 %}
+      <p class="lede">No posts yet — check back soon.</p>
+    {% else %}
+      <div class="blog-grid">
+        {% for post in site.posts %}
+        <a href="{{ post.url | relative_url }}" class="post-card reveal">
+          <div class="post-card-meta">
+            <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+            {% if post.tags.size > 0 %}<span class="post-card-tag">{{ post.tags.first }}</span>{% endif %}
+          </div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt | strip_html | truncatewords: 26 }}</p>
+          <span class="post-card-link">Read more <span class="btn-arrow">&rarr;</span></span>
+        </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Not sure where to start?</h2>
+      <p>Tell us a little about your environment and we'll recommend the right mix of assessments — no pressure, no obligation.</p>
+    </div>
+    <a href="{{ '/contact.html' | relative_url }}" class="btn btn-primary">Talk to an Analyst <span class="btn-arrow">&rarr;</span></a>
+  </div>
+</section>

@@ -22,10 +22,17 @@
   }
 
   /* ---------------- Active nav link ---------------- */
-  var here = (location.pathname.split('/').pop() || 'index.html');
+  var path = location.pathname;
+  var here = (path.split('/').pop() || 'index.html');
+  var onBlog = /\/blog(\.html)?(\/|$)/.test(path);
   document.querySelectorAll('.nav-links a').forEach(function(a){
     var target = a.getAttribute('href');
-    if (target === here || (here === '' && target === 'index.html')){
+    var targetName = target.split('/').pop();
+    if (targetName === 'blog.html'){
+      if (onBlog) a.classList.add('active');
+      return;
+    }
+    if (targetName === here || (here === 'index.html' && targetName === 'index.html')){
       a.classList.add('active');
     }
   });
@@ -57,6 +64,52 @@
         io.disconnect();
       }, 2500);
     }
+  }
+
+  /* ---------------- Post table of contents ---------------- */
+  var postContent = document.getElementById('postContent');
+  var tocAside = document.querySelector('.post-toc');
+  var tocNav = document.getElementById('postTocNav');
+  if (postContent && tocAside && tocNav){
+    var headings = postContent.querySelectorAll('h2, h3');
+    if (headings.length > 1){
+      var usedIds = {};
+      var tocLinks = [];
+      headings.forEach(function(h){
+        if (!h.id){
+          var slug = h.textContent.trim().toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '')
+            .trim()
+            .replace(/\s+/g, '-') || 'section';
+          var count = usedIds[slug] || 0;
+          usedIds[slug] = count + 1;
+          h.id = count ? (slug + '-' + count) : slug;
+        }
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent.trim();
+        if (h.tagName === 'H3') a.classList.add('toc-h3');
+        tocNav.appendChild(a);
+        tocLinks.push({ heading: h, link: a });
+      });
+
+      if ('IntersectionObserver' in window){
+        var tocIO = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if (!entry.isIntersecting) return;
+            var match = tocLinks.filter(function(t){ return t.heading === entry.target; })[0];
+            if (!match) return;
+            tocLinks.forEach(function(t){ t.link.classList.remove('is-active'); });
+            match.link.classList.add('is-active');
+          });
+        }, { rootMargin: '-100px 0px -70% 0px', threshold: 0 });
+        headings.forEach(function(h){ tocIO.observe(h); });
+      }
+    } else {
+      tocAside.style.display = 'none';
+    }
+  } else if (tocAside){
+    tocAside.style.display = 'none';
   }
 
   /* ---------------- Hero terminal typewriter ---------------- */

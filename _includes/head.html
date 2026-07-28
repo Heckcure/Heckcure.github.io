@@ -1,0 +1,19 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} — Heckcure{% else %}{{ site.title }} — Cyber Security Consultancy{% endif %}</title>
+{% assign meta_desc = page.description | default: page.excerpt | strip_html | strip_newlines | strip | truncatewords: 32 | default: site.description %}
+<meta name="description" content="{{ meta_desc }}">
+
+<meta property="og:title" content="{% if page.title %}{{ page.title }} — Heckcure{% else %}{{ site.title }}{% endif %}">
+<meta property="og:description" content="{{ meta_desc }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:image" content="{{ '/assets/og-image.png' | relative_url }}">
+
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/icon-32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/icon-192.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/icon-180.png' | relative_url }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/css/styles.css' | relative_url }}">

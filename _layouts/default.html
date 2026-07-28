@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body>
+<div class="atmosphere" aria-hidden="true"></div>
+
+{% include header.html %}
+
+<main>
+{{ content }}
+</main>
+
+{% include footer.html %}
+
+<script src="{{ '/js/main.js' | relative_url }}"></script>
+</body>
+</html>
